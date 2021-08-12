@@ -29,6 +29,7 @@ extension Attribute {
     }
 
     @inlinable
+    @discardableResult
     public mutating func withMutableValue<Value>(as valueType: Value.Type = Value.self, execute routine: (inout Value) throws -> Void) rethrows -> Bool {
         try withMutableValue(as: valueType, execute: routine) != nil
     }
