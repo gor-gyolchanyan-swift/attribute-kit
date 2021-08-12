@@ -17,7 +17,12 @@ extension MainTestCase {
 
     // MARK: Type: MainTestCase, Topic: Testing
 
-    internal func testMain() throws {
-        // This routine is intentionally left blank.
+    internal func testAttributeKey() throws {
+        let attributeKey = AttributeKey(accordingTo: Comment_AttributeSchematic.self)
+        XCTAssertEqual(ObjectIdentifier(attributeKey.valueType), ObjectIdentifier(String.self))
+        XCTAssertEqual(Mirror(reflecting: attributeKey).children.map(\.label), [])
+        XCTAssertEqual(attributeKey.description, String(reflecting: Comment_AttributeSchematic.self))
+        XCTAssertEqual(attributeKey.debugDescription, "\(String(reflecting: AttributeKey.self))(accordingTo: \(String(reflecting: Comment_AttributeSchematic.self)).self)")
+        XCTAssertEqual(try XCTUnwrap(attributeKey.defaultValue as? String), "")
     }
 }
