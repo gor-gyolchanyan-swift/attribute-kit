@@ -17,7 +17,13 @@ let package = Package(
     ],
      targets: [
         .target(
-            name: "AttributeKit"
+            name: "AttributeKit",
+            dependencies: [
+                "AttributeKit_AttributeSchematic"
+            ]
+        ),
+        .target(
+            name: "AttributeKit_AttributeSchematic"
         )
      ]
 )
