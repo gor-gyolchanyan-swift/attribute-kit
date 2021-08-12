@@ -25,4 +25,12 @@ extension MainTestCase {
         XCTAssertEqual(attributeKey.debugDescription, "\(String(reflecting: AttributeKey.self))(accordingTo: \(String(reflecting: Comment_AttributeSchematic.self)).self)")
         XCTAssertEqual(try XCTUnwrap(attributeKey.defaultValue as? String), "")
     }
+
+    internal func testAttribute() throws {
+        var attribute = Attribute("This is a comment.", accordingTo: Comment_AttributeSchematic.self)
+        XCTAssertEqual(Mirror(reflecting: attribute).children.map(\.label), ["key", "value"])
+        XCTAssertEqual(attribute.key, AttributeKey(accordingTo: Comment_AttributeSchematic.self))
+        attribute = Attribute(accordingTo: Comment_AttributeSchematic.self)
+        XCTAssertEqual(try XCTUnwrap(attribute.value as? String), "")
+    }
 }
