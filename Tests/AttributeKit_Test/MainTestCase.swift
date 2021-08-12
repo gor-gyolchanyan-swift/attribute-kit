@@ -30,7 +30,10 @@ extension MainTestCase {
         var attribute = Attribute("This is a comment.", accordingTo: Comment_AttributeSchematic.self)
         XCTAssertEqual(Mirror(reflecting: attribute).children.map(\.label), ["key", "value"])
         XCTAssertEqual(attribute.key, AttributeKey(accordingTo: Comment_AttributeSchematic.self))
-        attribute.value = "This is also a comment!"
-        XCTAssertEqual(try XCTUnwrap(attribute.value as? String), "This is also a comment!")
+        XCTAssertEqual(try XCTUnwrap(attribute.value as? String), "This is a comment.")
+        attribute.withMutableValue(as: String.self) {
+            $0 = "This is also a comment!"
+        }
+        XCTAssertEqual(try XCTUnwrap(attribute.withValue(as: String.self) { $0 }), "This is also a comment!")
     }
 }
