@@ -11,6 +11,6 @@ extension AttributeSchematic {
 
     @inlinable
     internal static func capsule(with value: Value? = nil) -> AttributeCapsule {
-        AttributeSpecificCapsule<Self>(value)
+        AttributeCapsuleForSchematic<Self>(value)
     }
 }

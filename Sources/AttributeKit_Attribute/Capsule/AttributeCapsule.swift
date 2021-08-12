@@ -16,7 +16,13 @@ internal protocol AttributeCapsule {
 
     var valueDescription: String { get }
 
-    func withValue<Value, Success>(execute routine: (Value) throws -> Success) rethrows -> Success?
+    func withValue<Value, Success>(
+        as valueType: Value.Type,
+        execute routine: (Value) throws -> Success
+    ) rethrows -> Success?
 
-    mutating func withMutableValue<Value, Success>(execute routine: (inout Value) throws -> Success) rethrows -> Success?
+    mutating func withMutableValue<Value, Success>(
+        as valueType: Value.Type,
+        execute routine: (inout Value) throws -> Success
+    ) rethrows -> Success?
 }
