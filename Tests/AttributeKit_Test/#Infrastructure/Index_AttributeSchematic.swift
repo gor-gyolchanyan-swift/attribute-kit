@@ -6,35 +6,29 @@
 import AttributeKit
 
 @frozen
-internal enum Name_AttributeSchematic: AttributeSchematic {
+internal enum Index_AttributeSchematic: AttributeSchematic {
 
     // MARK: Type: AttributeSchematic, Topic: Value
 
-    internal typealias Value = String
+    internal typealias Value = Int
 
     internal static var defaultValue: Value {
-        ""
-    }
-
-    // MARK: Type: AttributeSchematic, Topic: Name
-
-    internal static var name: String? {
-        "name"
+        0
     }
 }
 
 extension AttributeSet {
 
-    // MARK: Type: AttributeSet, Topic: Name
+    // MARK: Type: AttributeSet, Topic: Comment
 
-    internal var name: String {
+    internal var index: Int {
 
         get {
-            self[Name_AttributeSchematic.self]
+            self[Index_AttributeSchematic.self]
         }
 
-        set(name) {
-            self[Name_AttributeSchematic.self] = name
+        set(comment) {
+            self[Index_AttributeSchematic.self] = comment
         }
     }
 }

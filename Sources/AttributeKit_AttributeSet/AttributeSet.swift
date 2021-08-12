@@ -71,7 +71,9 @@ extension AttributeSet {
             let attributeKey = AttributeKey(accordingTo: schematicType)
             assert(attribute.key == attributeKey, "When setting the attribute for an attribute schematic in an attribute set, the key of the new attribute must match the attribute key for the schematic.")
             attributeByAttributeKey[attributeKey] = attribute
-            attributeKeySetByName[attributeKey.name, default: []].insert(attributeKey)
+            if let name = attributeKey.name {
+                attributeKeySetByName[name, default: []].insert(attributeKey)
+            }
         }
     }
 
@@ -82,9 +84,9 @@ extension AttributeSet {
 
     @inlinable
     public mutating func delete(forKey attributeKey: AttributeKey) {
-        if var remainingAttributeKeySet = attributeKeySetByName[attributeKey.name] {
+        if let name = attributeKey.name, var remainingAttributeKeySet = attributeKeySetByName[name] {
             remainingAttributeKeySet.remove(attributeKey)
-            attributeKeySetByName[attributeKey.name] = remainingAttributeKeySet.isEmpty ? nil : remainingAttributeKeySet
+            attributeKeySetByName[name] = remainingAttributeKeySet.isEmpty ? nil : remainingAttributeKeySet
         }
         attributeByAttributeKey[attributeKey] = nil
     }

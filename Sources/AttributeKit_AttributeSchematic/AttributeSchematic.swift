@@ -13,7 +13,7 @@ public protocol AttributeSchematic {
 
     // MARK: Type: AttributeSchematic, Topic: Name
 
-    static var name: String { get }
+    static var name: String? { get }
 }
 
 extension AttributeSchematic {
@@ -21,7 +21,7 @@ extension AttributeSchematic {
     // MARK: Type: AttributeSchematic, Topic: Name
 
     @inlinable
-    public static var name: String {
-        String(reflecting: Self.self)
+    public static var name: String? {
+        nil
     }
 }

@@ -12,13 +12,13 @@ internal enum Comment_AttributeSchematic: AttributeSchematic {
 
     internal typealias Value = String
 
-    internal static var defaultValue: String {
+    internal static var defaultValue: Value {
         ""
     }
 
     // MARK: Type: AttributeSchematic, Topic: Name
 
-    internal static var name: String {
+    internal static var name: String? {
         "comment"
     }
 }
