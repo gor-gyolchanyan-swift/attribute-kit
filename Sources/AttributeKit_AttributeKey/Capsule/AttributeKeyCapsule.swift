@@ -18,6 +18,10 @@ internal protocol AttributeKeyCapsule {
 
     var defaultValue: Any { get }
 
+    // MARK: Type: AttributeKeyCapsule, Topic: Name
+
+    var name: String { get }
+
     // MARK: Type: AttributeKeyCapsule, Topic: Schematic
 
     var schematicDescription: String { get }
