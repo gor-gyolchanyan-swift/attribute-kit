@@ -3,5 +3,12 @@
 // Licensing information can be found in the `LICENSE` file located at the root of the repository that contains this file.
 //
 
-@_exported import AttributeKit_AttributeKey
-@_exported import AttributeKit_AttributeSchematic
+extension AttributeKey: Equatable {
+
+    // MARK: Type: Equatable
+
+    @inlinable
+    public static func == (_ left: Self, _ right: Self) -> Bool {
+        left.tag == right.tag
+    }
+}

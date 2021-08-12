@@ -3,5 +3,17 @@
 // Licensing information can be found in the `LICENSE` file located at the root of the repository that contains this file.
 //
 
-@_exported import AttributeKit_AttributeKey
-@_exported import AttributeKit_AttributeSchematic
+extension AttributeKey {
+
+    // MARK: Type: AttributeKey, Topic: Value
+
+    @inlinable
+    public var valueType: Any.Type {
+        capsule.valueType
+    }
+
+    @inlinable
+    public var defaultValue: Any {
+        capsule.defaultValue
+    }
+}

@@ -3,5 +3,15 @@
 // Licensing information can be found in the `LICENSE` file located at the root of the repository that contains this file.
 //
 
-@_exported import AttributeKit_AttributeKey
-@_exported import AttributeKit_AttributeSchematic
+extension AttributeKey {
+
+    // MARK: Type: AttributeKey, Topic: Tag
+
+    @usableFromInline
+    internal typealias Tag = AttributeKeyCapsule.Tag
+
+    @inlinable
+    internal var tag: Tag {
+        capsule.tag
+    }
+}
