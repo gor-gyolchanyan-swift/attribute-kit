@@ -6,3 +6,4 @@
 @_exported import AttributeKit_Attribute
 @_exported import AttributeKit_AttributeKey
 @_exported import AttributeKit_AttributeSchematic
+@_exported import AttributeKit_AttributeSet
