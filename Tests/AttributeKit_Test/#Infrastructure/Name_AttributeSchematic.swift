@@ -8,12 +8,18 @@ import AttributeKit
 @frozen
 internal enum Name_AttributeSchematic: AttributeSchematic {
 
-    // MARK: Type: AttributeSchematic
+    // MARK: Type: AttributeSchematic, Topic: Value
 
     internal typealias Value = String
 
     internal static var defaultValue: String {
         ""
+    }
+
+    // MARK: Type: AttributeSchematic, Topic: Name
+
+    internal static var name: String {
+        "name"
     }
 }
 

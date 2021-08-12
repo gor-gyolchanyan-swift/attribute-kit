@@ -47,5 +47,10 @@ extension MainTestCase {
         attributeSet.comment = "This is a comment."
         XCTAssertEqual(attributeSet.name, "This is a name.")
         XCTAssertEqual(attributeSet.comment, "This is a comment.")
+        XCTAssertEqual(attributeSet.keySet(forName: "name"), [AttributeKey(accordingTo: Name_AttributeSchematic.self)])
+        XCTAssertEqual(attributeSet.keySet(forName: "comment"), [AttributeKey(accordingTo: Comment_AttributeSchematic.self)])
+        attributeSet.delete(forKey: AttributeKey(accordingTo: Name_AttributeSchematic.self))
+        XCTAssertEqual(attributeSet.keySet(forName: "name"), [])
+        XCTAssertEqual(attributeSet.keySet(forName: "comment"), [AttributeKey(accordingTo: Comment_AttributeSchematic.self)])
     }
 }
