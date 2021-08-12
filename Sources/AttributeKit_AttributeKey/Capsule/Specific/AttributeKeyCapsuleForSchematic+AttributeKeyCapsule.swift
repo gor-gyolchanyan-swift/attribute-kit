@@ -24,6 +24,13 @@ extension AttributeKeyCapsuleForSchematic: AttributeKeyCapsule {
         Schematic.defaultValue
     }
 
+    // MARK: Type: AttributeKeyCapsule, Topic: Name
+
+    @inlinable
+    internal var name: String {
+        Schematic.name
+    }
+
     // MARK: Type: AttributeKeyCapsule, Topic: Schematic
 
     @inlinable

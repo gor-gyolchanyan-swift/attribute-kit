@@ -5,9 +5,23 @@
 
 public protocol AttributeSchematic {
 
-    // MARK: Type: AttributeSchematic
+    // MARK: Type: AttributeSchematic, Topic: Value
 
     associatedtype Value
 
     static var defaultValue: Value { get }
+
+    // MARK: Type: AttributeSchematic, Topic: Name
+
+    static var name: String { get }
+}
+
+extension AttributeSchematic {
+
+    // MARK: Type: AttributeSchematic, Topic: Name
+
+    @inlinable
+    public static var name: String {
+        String(reflecting: Self.self)
+    }
 }
