@@ -7,16 +7,16 @@ import AttributeKit_AttributeSchematic
 
 @frozen
 @usableFromInline
-internal struct AttributeSpecificCapsule<Schematic>
+internal struct AttributeCapsuleForSchematic<Schematic>
 where Schematic: AttributeSchematic {
 
-    // MARK: Type: AttributeSpecificCapsule
+    // MARK: Type: AttributeCapsuleForSchematic
 
     @inlinable
-    internal init(_ value: Schematic.Value? = nil) {
-        specificValue = value ?? Schematic.defaultValue
+    internal init(_ schematicValue: Schematic.Value?) {
+        self.schematicValue = schematicValue ?? Schematic.defaultValue
     }
 
     @usableFromInline
-    internal var specificValue: Schematic.Value
+    internal var schematicValue: Schematic.Value
 }

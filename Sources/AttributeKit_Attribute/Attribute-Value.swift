@@ -8,12 +8,23 @@ extension Attribute {
     // MARK: Type: Attribute, Topic: Value
 
     @inlinable
-    public func withValue<Value, Success>(execute routine: (Value) throws -> Success) rethrows -> Success? {
-        try capsule.withValue(execute: routine)
+    public func withValue<Value, Success>(as valueType: Value.Type = Value.self, execute routine: (Value) throws -> Success) rethrows -> Success? {
+        try capsule.withValue(as: valueType, execute: routine)
     }
 
     @inlinable
-    public mutating func withMutableValue<Value, Success>(execute routine: (inout Value) throws -> Success) rethrows -> Success? {
-        try capsule.withMutableValue(execute: routine)
+    @discardableResult
+    public func withValue<Value>(as valueType: Value.Type = Value.self, execute routine: (Value) throws -> Void) rethrows -> Bool {
+        try withValue(as: valueType, execute: routine) != nil
+    }
+
+    @inlinable
+    public mutating func withMutableValue<Value, Success>(as valueType: Value.Type = Value.self, execute routine: (inout Value) throws -> Success) rethrows -> Success? {
+        try capsule.withMutableValue(as: valueType, execute: routine)
+    }
+
+    @inlinable
+    public mutating func withMutableValue<Value>(as valueType: Value.Type = Value.self, execute routine: (inout Value) throws -> Void) rethrows -> Bool {
+        try withMutableValue(as: valueType, execute: routine) != nil
     }
 }
