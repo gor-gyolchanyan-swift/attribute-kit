@@ -39,13 +39,13 @@ extension MainTestCase {
 
     internal func testAttributeSet() throws {
         var attributeSet = AttributeSet()
-        XCTAssertEqual(attributeSet[Name_AttributeSchematic.self], "")
-        XCTAssertEqual(attributeSet[Comment_AttributeSchematic.self], "")
-        attributeSet[Name_AttributeSchematic.self] = "This is a name."
-        XCTAssertEqual(attributeSet[Name_AttributeSchematic.self], "This is a name.")
-        XCTAssertEqual(attributeSet[Comment_AttributeSchematic.self], "")
-        attributeSet[Comment_AttributeSchematic.self] = "This is a comment."
-        XCTAssertEqual(attributeSet[Name_AttributeSchematic.self], "This is a name.")
-        XCTAssertEqual(attributeSet[Comment_AttributeSchematic.self], "This is a comment.")
+        XCTAssertEqual(attributeSet.name, "")
+        XCTAssertEqual(attributeSet.comment, "")
+        attributeSet.name = "This is a name."
+        XCTAssertEqual(attributeSet.name, "This is a name.")
+        XCTAssertEqual(attributeSet.comment, "")
+        attributeSet.comment = "This is a comment."
+        XCTAssertEqual(attributeSet.name, "This is a name.")
+        XCTAssertEqual(attributeSet.comment, "This is a comment.")
     }
 }

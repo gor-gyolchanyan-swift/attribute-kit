@@ -16,3 +16,19 @@ internal enum Comment_AttributeSchematic: AttributeSchematic {
         ""
     }
 }
+
+extension AttributeSet {
+
+    // MARK: Type: AttributeSet, Topic: Comment
+
+    internal var comment: String {
+
+        get {
+            self[Comment_AttributeSchematic.self]
+        }
+
+        set(comment) {
+            self[Comment_AttributeSchematic.self] = comment
+        }
+    }
+}

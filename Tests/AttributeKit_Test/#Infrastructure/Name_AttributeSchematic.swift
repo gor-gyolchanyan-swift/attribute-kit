@@ -16,3 +16,19 @@ internal enum Name_AttributeSchematic: AttributeSchematic {
         ""
     }
 }
+
+extension AttributeSet {
+
+    // MARK: Type: AttributeSet, Topic: Name
+
+    internal var name: String {
+
+        get {
+            self[Name_AttributeSchematic.self]
+        }
+
+        set(name) {
+            self[Name_AttributeSchematic.self] = name
+        }
+    }
+}
