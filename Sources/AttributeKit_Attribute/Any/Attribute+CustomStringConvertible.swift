@@ -3,6 +3,12 @@
 // Licensing information can be found in the `LICENSE` file located at the root of the repository that contains this file.
 //
 
-@_exported import AttributeKit_Attribute
-@_exported import AttributeKit_AttributeKey
-@_exported import AttributeKit_AttributeSchematic
+extension Attribute: CustomStringConvertible {
+
+    // MARK: Type: CustomStringConvertible
+
+    @inlinable
+    public var description: String {
+        "\(key.description): \(capsule.valueDescription)"
+    }
+}
