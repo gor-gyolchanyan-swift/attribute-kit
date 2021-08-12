@@ -3,7 +3,7 @@
 // Licensing information can be found in the `LICENSE` file located at the root of the repository that contains this file.
 //
 
-extension AttributeKeySpecificCapsule: AttributeKeyCapsule {
+extension AttributeKeyCapsuleForSchematic: AttributeKeyCapsule {
 
     // MARK: Type: AttributeKeyCapsule, Topic: Tag
 

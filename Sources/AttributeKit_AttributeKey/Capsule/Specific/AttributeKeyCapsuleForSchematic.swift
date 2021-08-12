@@ -7,10 +7,10 @@ import AttributeKit_AttributeSchematic
 
 @frozen
 @usableFromInline
-internal struct AttributeKeySpecificCapsule<Schematic>
+internal struct AttributeKeyCapsuleForSchematic<Schematic>
 where Schematic: AttributeSchematic {
 
-    // MARK: Type: AttributeKeySpecificCapsule
+    // MARK: Type: AttributeKeyCapsuleForSchematic
 
     @inlinable
     internal init() {

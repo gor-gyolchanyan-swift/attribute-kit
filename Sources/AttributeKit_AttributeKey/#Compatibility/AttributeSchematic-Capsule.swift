@@ -11,6 +11,6 @@ extension AttributeSchematic {
 
     @inlinable
     internal static var capsule: AttributeKeyCapsule {
-        AttributeKeySpecificCapsule<Self>()
+        AttributeKeyCapsuleForSchematic<Self>()
     }
 }
