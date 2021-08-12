@@ -17,5 +17,5 @@ public struct Attribute {
     }
 
     @usableFromInline
-    internal let capsule: AttributeCapsule
+    internal var capsule: AttributeCapsule
 }
