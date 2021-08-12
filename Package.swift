@@ -21,7 +21,8 @@ let package = Package(
             dependencies: [
                 "AttributeKit_Attribute",
                 "AttributeKit_AttributeKey",
-                "AttributeKit_AttributeSchematic"
+                "AttributeKit_AttributeSchematic",
+                "AttributeKit_AttributeSet"
             ]
         ),
         .target(
@@ -39,6 +40,13 @@ let package = Package(
         ),
         .target(
             name: "AttributeKit_AttributeSchematic"
+        ),
+        .target(
+            name: "AttributeKit_AttributeSet",
+            dependencies: [
+                "AttributeKit_Attribute",
+                "AttributeKit_AttributeKey"
+            ]
         ),
         .testTarget(
             name: "AttributeKit_Test",
