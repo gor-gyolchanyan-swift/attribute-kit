@@ -14,6 +14,8 @@ internal protocol AttributeCapsule {
 
     // MARK: Type: AttributeCapsule, Topic: Value
 
+    var value: Any { get }
+
     var valueDescription: String { get }
 
     func withValue<Value, Success>(
