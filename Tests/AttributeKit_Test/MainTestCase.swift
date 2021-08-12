@@ -36,4 +36,16 @@ extension MainTestCase {
         }
         XCTAssertEqual(try XCTUnwrap(attribute.withValue(as: String.self) { $0 }), "This is also a comment!")
     }
+
+    internal func testAttributeSet() throws {
+        var attributeSet = AttributeSet()
+        XCTAssertEqual(attributeSet[Name_AttributeSchematic.self], "")
+        XCTAssertEqual(attributeSet[Comment_AttributeSchematic.self], "")
+        attributeSet[Name_AttributeSchematic.self] = "This is a name."
+        XCTAssertEqual(attributeSet[Name_AttributeSchematic.self], "This is a name.")
+        XCTAssertEqual(attributeSet[Comment_AttributeSchematic.self], "")
+        attributeSet[Comment_AttributeSchematic.self] = "This is a comment."
+        XCTAssertEqual(attributeSet[Name_AttributeSchematic.self], "This is a name.")
+        XCTAssertEqual(attributeSet[Comment_AttributeSchematic.self], "This is a comment.")
+    }
 }
