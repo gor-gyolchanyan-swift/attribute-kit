@@ -20,7 +20,7 @@ internal protocol AttributeKeyCapsule {
 
     // MARK: Type: AttributeKeyCapsule, Topic: Name
 
-    var name: String { get }
+    var name: String? { get }
 
     // MARK: Type: AttributeKeyCapsule, Topic: Schematic
 

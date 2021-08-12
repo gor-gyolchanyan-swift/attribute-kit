@@ -27,7 +27,7 @@ extension AttributeKeyCapsuleForSchematic: AttributeKeyCapsule {
     // MARK: Type: AttributeKeyCapsule, Topic: Name
 
     @inlinable
-    internal var name: String {
+    internal var name: String? {
         Schematic.name
     }
 

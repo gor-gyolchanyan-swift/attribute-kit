@@ -41,18 +41,27 @@ extension MainTestCase {
         var attributeSet = AttributeSet()
         XCTAssertEqual(attributeSet.name, "")
         XCTAssertEqual(attributeSet.comment, "")
+        XCTAssertEqual(attributeSet.index, 0)
         attributeSet.name = "This is a name."
         XCTAssertEqual(attributeSet.name, "This is a name.")
         XCTAssertEqual(attributeSet.comment, "")
+        XCTAssertEqual(attributeSet.index, 0)
         attributeSet.comment = "This is a comment."
         XCTAssertEqual(attributeSet.name, "This is a name.")
         XCTAssertEqual(attributeSet.comment, "This is a comment.")
+        XCTAssertEqual(attributeSet.index, 0)
+        attributeSet.index = 42
+        XCTAssertEqual(attributeSet.name, "This is a name.")
+        XCTAssertEqual(attributeSet.comment, "This is a comment.")
+        XCTAssertEqual(attributeSet.index, 42)
         XCTAssertEqual(attributeSet.keySet(forName: "name"), [AttributeKey(accordingTo: Name_AttributeSchematic.self)])
         XCTAssertEqual(attributeSet.keySet(forName: "comment"), [AttributeKey(accordingTo: Comment_AttributeSchematic.self)])
+        XCTAssertEqual(attributeSet.keySet(forName: "index"), [])
         XCTAssertEqual(try XCTUnwrap(attributeSet.valueByName { $0.first! } as? [String: String]), ["name": "This is a name.", "comment": "This is a comment."])
         attributeSet.delete(forKey: AttributeKey(accordingTo: Name_AttributeSchematic.self))
         XCTAssertEqual(attributeSet.keySet(forName: "name"), [])
         XCTAssertEqual(attributeSet.keySet(forName: "comment"), [AttributeKey(accordingTo: Comment_AttributeSchematic.self)])
+        XCTAssertEqual(attributeSet.keySet(forName: "index"), [])
         XCTAssertEqual(try XCTUnwrap(attributeSet.valueByName { $0.first! } as? [String: String]), ["comment": "This is a comment."])
     }
 }

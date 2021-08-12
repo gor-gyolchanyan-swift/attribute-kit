@@ -8,7 +8,7 @@ extension AttributeKey {
     // MARK: Type: AttributeKey, Topic: Name
 
     @inlinable
-    public var name: String {
+    public var name: String? {
         capsule.name
     }
 }
