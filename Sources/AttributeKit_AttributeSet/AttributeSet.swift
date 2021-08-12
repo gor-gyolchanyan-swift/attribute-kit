@@ -10,28 +10,30 @@ import AttributeKit_AttributeSchematic
 @frozen
 public struct AttributeSet {
 
-    // MARK: Type: AttributeSet, Topic: Mapping
+    // MARK: Type: AttributeSet
 
     @usableFromInline
-    internal typealias Mapping = Dictionary<AttributeKey, Attribute>
+    internal typealias AttributeByAttributeKey = Dictionary<AttributeKey, Attribute>
+
+    @usableFromInline
+    internal typealias AttributeKeySetByName = Dictionary<String, Set<AttributeKey>>
 
     @inlinable
-    internal init(mapping: Mapping) {
-        self.mapping = mapping
+    public init() {
+        attributeByAttributeKey = [:]
+        attributeKeySetByName = [:]
     }
 
     @usableFromInline
-    internal var mapping: Mapping
+    internal var attributeByAttributeKey: AttributeByAttributeKey
+
+    @usableFromInline
+    internal var attributeKeySetByName: AttributeKeySetByName
 }
 
 extension AttributeSet {
 
     // MARK: Type: AttributeSet
-
-    @inlinable
-    public init() {
-        self.init(mapping: [:])
-    }
 
     @inlinable
     public subscript<Schematic>(_ schematicType: Schematic.Type) -> Schematic.Value
@@ -51,11 +53,6 @@ extension AttributeSet {
             }
         }
     }
-}
-
-extension AttributeSet {
-
-    // MARK: Type: AttributeSet
 
     @inlinable
     internal subscript<Schematic>(attribute schematicType: Schematic.Type) -> Attribute
@@ -63,7 +60,7 @@ extension AttributeSet {
 
         get {
             let attributeKey = AttributeKey(accordingTo: schematicType)
-            if let attribute = mapping[attributeKey] {
+            if let attribute = attributeByAttributeKey[attributeKey] {
                 return attribute
             } else {
                 return Attribute(accordingTo: schematicType)
@@ -73,7 +70,22 @@ extension AttributeSet {
         set(attribute) {
             let attributeKey = AttributeKey(accordingTo: schematicType)
             assert(attribute.key == attributeKey, "When setting the attribute for an attribute schematic in an attribute set, the key of the new attribute must match the attribute key for the schematic.")
-            mapping[attributeKey] = attribute
+            attributeByAttributeKey[attributeKey] = attribute
+            attributeKeySetByName[attributeKey.name, default: []].insert(attributeKey)
         }
+    }
+
+    @inlinable
+    public func keySet(forName name: String) -> Set<AttributeKey> {
+        attributeKeySetByName[name, default: []]
+    }
+
+    @inlinable
+    public mutating func delete(forKey attributeKey: AttributeKey) {
+        if var remainingAttributeKeySet = attributeKeySetByName[attributeKey.name] {
+            remainingAttributeKeySet.remove(attributeKey)
+            attributeKeySetByName[attributeKey.name] = remainingAttributeKeySet.isEmpty ? nil : remainingAttributeKeySet
+        }
+        attributeByAttributeKey[attributeKey] = nil
     }
 }
