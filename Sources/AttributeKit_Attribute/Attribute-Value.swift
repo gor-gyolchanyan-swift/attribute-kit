@@ -8,6 +8,11 @@ extension Attribute {
     // MARK: Type: Attribute, Topic: Value
 
     @inlinable
+    public var value: Any {
+        capsule.value
+    }
+
+    @inlinable
     public func withValue<Value, Success>(as valueType: Value.Type = Value.self, execute routine: (Value) throws -> Success) rethrows -> Success? {
         try capsule.withValue(as: valueType, execute: routine)
     }

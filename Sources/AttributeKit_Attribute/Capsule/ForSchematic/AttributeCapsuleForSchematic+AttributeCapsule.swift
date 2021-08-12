@@ -17,6 +17,11 @@ extension AttributeCapsuleForSchematic: AttributeCapsule {
     // MARK: Type: AttributeCapsule, Topic: Value
 
     @inlinable
+    internal var value: Any {
+        schematicValue
+    }
+
+    @inlinable
     internal var valueDescription: String {
         String(reflecting: schematicValue)
     }
