@@ -3,4 +3,11 @@
 // Licensing information can be found in the `LICENSE` file located at the root of the repository that contains this file.
 //
 
-@_exported import AttributeKit_AttributeSchematic
+public protocol AttributeSchematic {
+
+    // MARK: Type: AttributeSchematic
+
+    associatedtype Value
+
+    static var defaultValue: Value { get }
+}
