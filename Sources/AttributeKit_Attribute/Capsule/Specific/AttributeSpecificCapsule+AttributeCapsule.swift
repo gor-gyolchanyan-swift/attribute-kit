@@ -17,22 +17,28 @@ extension AttributeSpecificCapsule: AttributeCapsule {
     // MARK: Type: AttributeCapsule, Topic: Value
 
     @inlinable
-    internal var value: Any {
-
-        get {
-            specificValue
-        }
-
-        set(value) {
-            guard let specificValue = value as? Schematic.Value else {
-                preconditionFailure("Caught an attempt to set the value of an attribute whose value type is `\(String(reflecting: Schematic.Value.self))` to an instance of `\(String(reflecting: type(of: value)))`.")
-            }
-            self.specificValue = specificValue
-        }
+    internal var valueDescription: String {
+        String(reflecting: specificValue)
     }
 
     @inlinable
-    internal var valueDescription: String {
-        String(reflecting: specificValue)
+    internal func withValue<Value, Success>(execute routine: (Value) throws -> Success) rethrows -> Success? {
+        guard Value.self == Schematic.Value.self else {
+            return nil
+        }
+        let value = specificValue as! Value
+        return try routine(value)
+    }
+
+    @inlinable
+    internal mutating func withMutableValue<Value, Success>(execute routine: (inout Value) throws -> Success) rethrows -> Success? {
+        guard Value.self == Schematic.Value.self else {
+            return nil
+        }
+        var value = specificValue as! Value
+        defer {
+            specificValue = value as! Schematic.Value
+        }
+        return try routine(&value)
     }
 }

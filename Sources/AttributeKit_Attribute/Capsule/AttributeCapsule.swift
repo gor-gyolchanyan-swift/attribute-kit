@@ -14,7 +14,9 @@ internal protocol AttributeCapsule {
 
     // MARK: Type: AttributeCapsule, Topic: Value
 
-    var value: Any { get set }
-
     var valueDescription: String { get }
+
+    func withValue<Value, Success>(execute routine: (Value) throws -> Success) rethrows -> Success?
+
+    mutating func withMutableValue<Value, Success>(execute routine: (inout Value) throws -> Success) rethrows -> Success?
 }
