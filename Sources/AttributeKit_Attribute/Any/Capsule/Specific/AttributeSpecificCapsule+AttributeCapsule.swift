@@ -18,7 +18,17 @@ extension AttributeSpecificCapsule: AttributeCapsule {
 
     @inlinable
     internal var value: Any {
-        specificValue
+
+        get {
+            specificValue
+        }
+
+        set(value) {
+            guard let specificValue = value as? Schematic.Value else {
+                preconditionFailure("Caught an attempt to set the value of an attribute whose value type is `\(String(reflecting: Schematic.Value.self))` to an instance of `\(String(reflecting: type(of: value)))`.")
+            }
+            self.specificValue = specificValue
+        }
     }
 
     @inlinable

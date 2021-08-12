@@ -9,6 +9,13 @@ extension Attribute {
 
     @inlinable
     public var value: Any {
-        capsule.value
+
+        get {
+            capsule.value
+        }
+
+        set(value) {
+            capsule.value = value
+        }
     }
 }

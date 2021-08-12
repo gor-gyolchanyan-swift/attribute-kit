@@ -14,7 +14,7 @@ internal protocol AttributeCapsule {
 
     // MARK: Type: AttributeCapsule, Topic: Value
 
-    var value: Any { get }
+    var value: Any { get set }
 
     var valueDescription: String { get }
 }
