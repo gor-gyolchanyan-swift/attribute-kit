@@ -88,4 +88,24 @@ extension AttributeSet {
         }
         attributeByAttributeKey[attributeKey] = nil
     }
+
+    @inlinable
+    public func valueByName(choosingKeyWith chooseKey: (Set<AttributeKey>) throws -> AttributeKey) rethrows -> [String: Any] {
+        var valueByName: [String: Any] = [:]
+        for (name, keySet) in attributeKeySetByName {
+            let chosenKey: AttributeKey
+            if keySet.count > 1 {
+                chosenKey = try chooseKey(keySet)
+            } else if keySet.count > 0 {
+                chosenKey = keySet[keySet.startIndex]
+            } else {
+                continue
+            }
+            guard let attribute = attributeByAttributeKey[chosenKey] else {
+                continue
+            }
+            valueByName[name] = attribute.value
+        }
+        return valueByName
+    }
 }
