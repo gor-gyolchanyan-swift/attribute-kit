@@ -7,10 +7,10 @@ extension AttributeAccessor {
 
     // MARK: AttributeAccessor - AttributeInspector
 
-    /// Accesses the ``AttributeSpecifier`` set by sequentially giving them to the given ``AttributeAccessor``.
+    /// Accesses the ``AttributeSpecifier`` set by sequentially providing each ``AttributeSpecifier`` to the given ``AttributeInspector``.
     ///
-    /// - parameter inspector: The ``AttributeInspector`` that will inspect the ``AttributeSpecifier`` set.
-    internal func accessByInspector(_ inspector: inout some AttributeInspector) {
+    /// - parameter inspector: The ``AttributeInspector`` that will inspect each ``AttributeSpecifier`` in the ``AttributeSpecifier`` set.
+    public func accessByInspector(_ inspector: inout some AttributeInspector) {
         for key in everyValueForKey.keys {
             inspector.inspectAttribute(for: key.rawValue, in: self)
         }

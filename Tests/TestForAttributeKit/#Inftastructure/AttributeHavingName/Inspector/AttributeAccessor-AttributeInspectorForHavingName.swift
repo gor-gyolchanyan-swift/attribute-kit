@@ -5,13 +5,13 @@
 
 import AttributeKit
 
-extension HasAttributeStorageObject {
+extension AttributeAccessor {
 
-    // MARK: HasAttributeStorageObject - AttributeInspectorForHavingName
-
+    // MARK: AttributeAccessor - AttributeInspectorForHavingName
+    
     internal var everyAttributeHavingName: [String: AnyHashable] {
         var inspector = AttributeInspectorForHavingName()
-        inspector.inspectEveryAttribute(in: self)
+        accessByInspector(&inspector)
         return inspector.everyValueForSpecifierType
     }
 }
