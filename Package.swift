@@ -1,8 +1,8 @@
-// swift-tools-version:5.4
+// swift-tools-version:5.7
 
 //
-// Introductory information can be found in the `README.md` file located at the root of the repository that contains this file.
-// Licensing information can be found in the `LICENSE` file located at the root of the repository that contains this file.
+// Introductory information is in the `README.md` file in the root directory of the repository this file is in.
+// Licensing information is in the `LICENSE.txt` file in the root directory of the repository this file is in.
 //
 
 import PackageDescription
@@ -17,39 +17,10 @@ let package = Package(
     ],
      targets: [
         .target(
-            name: "AttributeKit",
-            dependencies: [
-                "AttributeKit_Attribute",
-                "AttributeKit_AttributeKey",
-                "AttributeKit_AttributeSchematic",
-                "AttributeKit_AttributeSet"
-            ]
-        ),
-        .target(
-            name: "AttributeKit_Attribute",
-            dependencies: [
-                "AttributeKit_AttributeKey",
-                "AttributeKit_AttributeSchematic"
-            ]
-        ),
-        .target(
-            name: "AttributeKit_AttributeKey",
-            dependencies: [
-                "AttributeKit_AttributeSchematic"
-            ]
-        ),
-        .target(
-            name: "AttributeKit_AttributeSchematic"
-        ),
-        .target(
-            name: "AttributeKit_AttributeSet",
-            dependencies: [
-                "AttributeKit_Attribute",
-                "AttributeKit_AttributeKey"
-            ]
+            name: "AttributeKit"
         ),
         .testTarget(
-            name: "AttributeKit_Test",
+            name: "TestForAttributeKit",
             dependencies: [
                 "AttributeKit"
             ]
