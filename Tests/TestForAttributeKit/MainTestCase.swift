@@ -21,10 +21,12 @@ extension MainTestCase {
         XCTAssertEqual(userAsStruct.effectiveDisplayName, "Anonymous")
         userAsStruct.displayName = "Bob"
         XCTAssertEqual(userAsStruct.displayName, "Bob")
+        XCTAssertEqual(userAsStruct.everyAttributeHavingName, ["displayName": "Bob"])
 
         let userAsClass = UserAsClass()
         XCTAssertEqual(userAsClass.effectiveDisplayName, "Anonymous")
         userAsClass.displayName = "Bill"
         XCTAssertEqual(userAsClass.displayName, "Bill")
+        XCTAssertEqual(userAsClass.everyAttributeHavingName, ["displayName": "Bill"])
     }
 }

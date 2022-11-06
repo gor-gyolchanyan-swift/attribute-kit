@@ -5,13 +5,9 @@
 
 import AttributeKit
 
-internal enum DisplayNameAttributeSpecifier: AttributeSpecifier {
+protocol AttributeSpecifierHavingName: AttributeSpecifier {
 
-    // MARK: AttributeSpecifier
+    // MARK: AttributeSpecifierHavingName
 
-    internal typealias Attribute = String?
-
-    internal static func makeDefaultAttribute(for accessor: AttributeAccessor) -> String? {
-        nil
-    }
+    static var attributeName: String { get }
 }
