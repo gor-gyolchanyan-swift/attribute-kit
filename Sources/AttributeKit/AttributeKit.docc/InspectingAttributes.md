@@ -27,7 +27,7 @@ fileprivate struct DebugAttributeSetAttributeInspector {
 }
 ```
 
-In order to conform ``AttributeInspector`` protocol, the `struct` must implement the ``AttributeInspector/inspectAttribute(for:in:)`` method:
+In order to conform to the ``AttributeInspector`` protocol, the `struct` must implement the ``AttributeInspector/inspectAttribute(for:in:)`` method:
 
 ```swift
 extension DebugAttributeSetAttributeInspector: AttributeInspector {
